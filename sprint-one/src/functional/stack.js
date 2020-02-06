@@ -12,16 +12,16 @@ var Stack = function() {
   };
 
   someInstance.pop = function() {
-    var positionArray = Object.keys(storage).map(element => Number.parseInt(element));
-    var highestValue = Math.max(... positionArray);
-    var popItem = storage[highestValue];
-    delete storage[highestValue];
+    var popItem = storage[position];
+    delete storage[position];
+    if (position > 0) {
+      position -= 1;
+    }
     return popItem;
   };
 
   someInstance.size = function() {
-    var keysArray = Object.keys(storage);
-    return keysArray.length;
+    return position;
   };
 
   return someInstance;
