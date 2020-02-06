@@ -6,12 +6,12 @@ class Queue {
     this.firstInLine = 0;
     this.lastInLine = 0;
     this.lineLength = 0;
-  };
+  }
   enqueue(value) {
     this.lastInLine += 1;
     this.storage[this.lastInLine] = value;
     this.lineLength = this.lastInLine - this.firstInLine;
-  };
+  }
   dequeue() {
     if (this.lineLength !== 0) {
       this.firstInLine += 1;
@@ -21,7 +21,7 @@ class Queue {
       return output;
     }
 
-  };
+  }
   size () {
     return this.lineLength;
   }
