@@ -19,7 +19,7 @@ class Stack {
 
   }
   size() {
-    return this.position
+    return this.position;
   }
 
 }
