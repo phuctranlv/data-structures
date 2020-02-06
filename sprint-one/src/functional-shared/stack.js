@@ -10,7 +10,6 @@ var Stack = function() {
 var stackMethods = {
   push: function(value) {
     this.lastPropertyKey += 1;
-    debugger;
     this[this.lastPropertyKey] = value;
   },
   pop: function() {
