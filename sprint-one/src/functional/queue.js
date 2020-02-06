@@ -3,32 +3,29 @@ var Queue = function() {
 
   // Use an object with numeric keys to store values
   var storage = {};
-  var position = 0;
-
+  var lastNumberIn = 0;
+  var firstNumberIn = 0;
 
   // Implement the methods below
 
   someInstance.enqueue = function(value) {
-    storage[position] = value;
-    position += 1;
+    storage[lastNumberIn] = value;
+    lastNumberIn += 1;
   };
 
   someInstance.dequeue = function() {
-    var currentPositionArray = Object.keys(storage).map(element => Number.parseInt(element));
-    var itemToReturn = storage[Math.min(... currentPositionArray)]
-    delete storage[Math.min(... currentPositionArray)];
+    var itemToReturn = storage[firstNumberIn];
+    delete storage[firstNumberIn];
+    if ((lastNumberIn - firstNumberIn) > 0) {
+      firstNumberIn += 1;
+    }
     return itemToReturn;
     
   };
 
   someInstance.size = function() {
-    // debugger;
-    var currentPositionArray = Object.keys(storage).map(element => Number.parseInt(element));
-    // debugger;
-    return currentPositionArray.length;
+    return lastNumberIn - firstNumberIn;
   };
 
   return someInstance;
 };
-var coffee = Queue()
-coffee.enqueue('black')
