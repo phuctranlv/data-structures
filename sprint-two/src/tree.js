@@ -11,28 +11,55 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
-  // input: value
-  // side effect: add a new node that has the property value
 
-
-  // create an array for all of the names of our original tree's children
 
   // we need to create a new object or node with the property of the value that was passed in
-
-  // we need to push that value to the children property on our tree "which is an array"
   let childNode = {value: value,
     children: []};
+
+  // we need to somehow extend the property methods of our original tree to our child node/ objects
   _.extend(childNode, treeMethods);
   this[value] = childNode;
+
+  // we need to push that value to the children property on our tree "which is an array"
   let name = this[value];
   this.children.push(name);
 
-  // we need to somehow extend the property methods of our original tree to our child node/ objects
+
+
+
+
 
 };
 
 treeMethods.contains = function(target) {
-  
+  // Constains method
+  // that takes any input
+  // and returns a boolean
+  // for whether or not it's value is contained in the whole tree
+
+  // most likely a recursive function
+
+  //check for value in original tree
+  let isContained = false;
+  // create helper function that takes node as argument
+  let checkForTarget = function (node) {
+    // create if statement comparing the target to the node's value
+    if (node[target] && node[target].value === target) {
+      isContained = true;
+      return isContained;
+    }
+    // create for loop to iterate through node's children array
+    for (var i = 0; i < node.children.length; i++) {
+      // pass each "child" node back into our helper function
+      debugger;
+      checkForTarget(node.children[i]);
+    }
+    return isContained;
+  };
+  isContained = checkForTarget(this);
+  // return false if no value is found
+  return isContained;
 };
 
 
