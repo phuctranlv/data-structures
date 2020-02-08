@@ -20,14 +20,19 @@ treeMethods.addChild = function(value) {
   // we need to create a new object or node with the property of the value that was passed in
 
   // we need to push that value to the children property on our tree "which is an array"
-  this.children.push({value: value,
-    children: []});
+  let childNode = {value: value,
+    children: []};
+  _.extend(childNode, treeMethods);
+  this[value] = childNode;
+  let name = this[value];
+  this.children.push(name);
 
   // we need to somehow extend the property methods of our original tree to our child node/ objects
-  _.extend(this.children[0], treeMethods);
+
 };
 
 treeMethods.contains = function(target) {
+  
 };
 
 
