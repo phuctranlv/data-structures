@@ -52,7 +52,6 @@ treeMethods.contains = function(target) {
     // create for loop to iterate through node's children array
     for (var i = 0; i < node.children.length; i++) {
       // pass each "child" node back into our helper function
-      debugger;
       checkForTarget(node.children[i]);
     }
     return isContained;
